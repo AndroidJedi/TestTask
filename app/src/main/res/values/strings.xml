@@ -1,0 +1,6 @@
+<resources>
+    <string name="app_name">TestTask</string>
+    <string name="action_settings">Settings</string>
+    <string name="fragment_country_list_title">Countries</string>
+    <string name="country_holder_population_title">Population: %1$s</string>
+</resources>

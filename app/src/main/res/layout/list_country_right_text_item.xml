@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="viewModel"
+            type="com.medisafe.task.view.list.CountryListViewModel" />
+
+        <variable
+            name="country"
+            type="com.medisafe.task.api.model.Country" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/country_card_view"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:layout_marginEnd="12dp"
+            android:layout_marginStart="12dp"
+            android:layout_marginTop="8dp"
+            android:foreground="@drawable/rippled_item_background"
+            android:onClick="@{() -> viewModel.selectCountry(country)}"
+            app:cardBackgroundColor="@color/light_grey"
+            app:cardCornerRadius="4dp"
+            app:cardElevation="5dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:cardElevation="5dp">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/country_holder_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="6dp">
+
+                <ImageView
+                    android:id="@+id/country_image_view"
+                    app:imageUrl="@{country.flag}"
+                    android:layout_width="0dp"
+                    android:layout_height="150dp"
+                    android:scaleType="centerCrop"
+                    android:background="@android:color/darker_gray"
+                    app:layout_constraintHorizontal_bias="0.1"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/country_title_text_view"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/country_title_text_view"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:textSize="16sp"
+                    android:textColor="@android:color/black"
+                    android:text="@{country.englishName}"
+                    android:textStyle="bold"
+                    tools:text="name"
+                    app:layout_constraintBottom_toTopOf="@+id/country_population_text_view"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/country_image_view"
+                    app:layout_constraintTop_toTopOf="@+id/country_image_view" />
+
+                <TextView
+                    android:id="@+id/country_population_text_view"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:textSize="12sp"
+                    android:textColor="@android:color/black"
+                    android:text="@{@string/country_holder_population_title(country.population)}"
+                    tools:text="population"
+                    app:layout_constraintBottom_toBottomOf="@+id/country_image_view"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/country_image_view"
+                    app:layout_constraintTop_toBottomOf="@+id/country_title_text_view" />
+
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.cardview.widget.CardView>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>
+
